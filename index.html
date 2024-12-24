@@ -174,13 +174,25 @@
             const list = document.querySelector('.article-list');
             list.innerHTML = '';
             articles
-                .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
+                .sort((a, b) => {
+                    const parseDate = (dateStr) => {
+                        const [year, month, day, hour, minute] = dateStr.split('-').map(Number);
+                        return new Date(year, month - 1, day, hour, minute);
+                    };
+                    return parseDate(b.releaseDate) - parseDate(a.releaseDate); // 최신순 정렬
+                })
                 .forEach(article => {
+                    const githubBase = "https://github.com/JisungEda55/pressnote/blob/main/pressnote/";
+                    const publicBase = "https://jisungeda55.github.io/pressnote/pressnote/";
+                    const adjustedUrl = article.url.startsWith(githubBase)
+                        ? publicBase + article.url.replace(githubBase, '')
+                        : article.url;
+
                     const listItem = document.createElement('li');
                     listItem.innerHTML = `
-                        <a href="${article.url}" target="_blank">${article.title}</a>
+                        <a href="${adjustedUrl}" target="_blank">${article.title}</a>
                         <p>${article.description}</p>
-                        <p>${new Date(article.releaseDate).toLocaleDateString('ko-KR', {
+                        <p>${new Date(article.releaseDate.split('-').slice(0, 3).join('-')).toLocaleDateString('ko-KR', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
