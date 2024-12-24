@@ -3,18 +3,18 @@
         "title": "새로운 MacBook Pro 출시",
         "description": "애플은 새로운 MacBook Pro 모델을 공개했습니다.",
         "url": "/article-1.html",
-        "releaseDate": "2024-01-15"
+        "releaseDate": "2024-01-17"
     },
     {
         "title": "iPhone 15 출시",
         "description": "새로운 iPhone 15이 출시되었습니다.",
         "url": "/article-2.html",
-        "releaseDate": "2024-01-20"
+        "releaseDate": "2024-01-13"
     },
     {
         "title": "탄소 중립 프로젝트 발표",
         "description": "애플의 지속 가능성을 위한 새로운 계획이 발표되었습니다.",
         "url": "/article-3.html",
-        "releaseDate": "2024-01-25"
+        "releaseDate": "2024-01-15"
     }
 ]
