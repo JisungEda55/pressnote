@@ -183,7 +183,7 @@
                 })
                 .forEach(article => {
                     const githubBase = "https://github.com/JisungEda55/pressnote/blob/main/pressnote/";
-                    const publicBase = "https://jisungeda55.github.io/pressnote/";
+                    const publicBase = "https://jisungeda55.github.io/pressnote/pressnote/";
                     const adjustedUrl = article.url.startsWith(githubBase)
                         ? publicBase + article.url.replace(githubBase, '')
                         : article.url;
