@@ -1,20 +1,20 @@
 [
     {
-        "title": "1, 새로운 공개",
-        "description": "혁신적인 디자인과 강력한 성능을 자랑하는 출시.",
-        "url": "/article-1.html"
+        "title": "새로운 MacBook Pro 출시",
+        "description": "애플은 새로운 MacBook Pro 모델을 공개했습니다.",
+        "url": "/article-1.html",
         "releaseDate": "2024-01-15"
     },
     {
-        "title": "2, 지속 가능성을 위한 노력",
-        "description": "탄소 증대 목표를 향한 환경 이니셔티브를 발표.",
-        "url": "/article-2.html"
-        "releaseDate": "2024-01-15"
+        "title": "iPhone 15 출시",
+        "description": "새로운 iPhone 15이 출시되었습니다.",
+        "url": "/article-2.html",
+        "releaseDate": "2024-01-20"
     },
     {
-        "title": "3, 정식 출시",
-        "description": "새로운 기능과 보안 향상을 포함한 혁명이 정식 출시되었습니다.",
-        "url": "/article-3.html"
-        "releaseDate": "2024-01-15"
+        "title": "탄소 중립 프로젝트 발표",
+        "description": "애플의 지속 가능성을 위한 새로운 계획이 발표되었습니다.",
+        "url": "/article-3.html",
+        "releaseDate": "2024-01-25"
     }
 ]
