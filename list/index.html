@@ -243,7 +243,7 @@ body::-webkit-scrollbar {
                 listItem.innerHTML = `
                     <a href="${adjustedUrl}" target="_blank">${article.title}</a>
                     <p>${article.description}</p>
-                    <p>배포일자: ${new Date(article.releaseDate.split('-').slice(0, 3).join('-')).toLocaleDateString('ko-KR', {
+                    <p>${new Date(article.releaseDate.split('-').slice(0, 3).join('-')).toLocaleDateString('ko-KR', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
