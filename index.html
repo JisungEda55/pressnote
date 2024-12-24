@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보도자료 | HaeSoleyo24</title>
+    <link rel="icon" href="https://i.ibb.co/TTV76Dj/a.webp" type="image/webp">
+    <style>
+      @font-face {
+            font-family: 'MBC1961M';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961M.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'LINESeedKR-Bd';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --header-bg-color: #153cff;
+            --header-text-color: #fff;
+            --footer-bg-color: #153cff;
+            --footer-text-color: #fff;
+            --accent-color: #d41115;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --header-bg-color: #1e1e1e;
+                --header-text-color: #fff;
+                --footer-bg-color: #1e1e1e;
+                --footer-text-color: #e0e0e0;
+                --accent-color: #ff5722;
+            }
+        }
+
+        body {
+            font-family: 'LINESeedKR-Bd';
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: hidden;
+        }
+        header {
+            background-color: var(--header-bg-color);
+            color: var(--header-text-color);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'MBC1961M';
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem;
+            font-family: 'LINESeedKR-Bd';
+            background: var(--bg-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+            border-radius: 8px;
+        }
+        .article-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .article-list li {
+            margin-bottom: 2rem;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-color);
+            transition: transform 0.3s, box-shadow 0.3s, border-radius 0.3s;
+        }
+        .article-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+        }
+        .article-list li:hover a {
+            color: var(--accent-color);
+        }
+        .article-list a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-family: 'LINESeedKR-Bd';
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .article-list a:hover {
+            text-decoration: none;
+        }
+        .article-list a {
+            target: _blank;
+        }
+        .article-list p {
+            margin: 0.5rem 0 0;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--footer-bg-color);
+            color: var(--footer-text-color);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer .copyleft-icon {
+            font-size: 1rem;
+            color: var(--footer-text-color);
+            transform: scaleX(-1);
+            display: inline-block;
+        }
+        footer .date {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--footer-text-color);
+        }
+        @media (max-width: 767px) {
+            header {
+                border-bottom-left-radius: 16px;
+                border-bottom-right-radius: 16px;
+            }
+            header h1 {
+                font-size: 3.2rem;
+                padding: 0.1rem 2rem;
+             }
+            footer {
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+            }
+        }
+        @media (min-width: 768px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            header {
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+            }
+            footer {
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+            }
+            main {
+                margin: 3rem auto;
+            }
+        }
+    </style>
+    <script>
+        async function fetchArticles() {
+            const response = await fetch('https://raw.githubusercontent.com/JisungEda55/pressnote/refs/heads/main/list/press.json');
+            const articles = await response.json();
+            const list = document.querySelector('.article-list');
+            list.innerHTML = '';
+            articles
+                .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
+                .forEach(article => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <a href="${article.url}" target="_blank">${article.title}</a>
+                        <p>${article.description}</p>
+                        <p>${new Date(article.releaseDate).toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}</p>
+                    `;
+                    list.appendChild(listItem);
+                });
+        }
+        document.addEventListener('DOMContentLoaded', fetchArticles);
+
+        function displayDate() {
+            const dateElement = document.querySelector('.date');
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            dateElement.textContent = `현재 날짜: ${formattedDate}`;
+        }
+        document.addEventListener('DOMContentLoaded', displayDate);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>보도자료</h1>
+    </header>
+    <main>
+        <ul class="article-list">
+            <!-- Articles will be loaded here dynamically -->
+        </ul>
+    </main>
+    <footer>
+        <p><span class="copyleft-icon">&copy;</span> HaeSoleyo 2025</p>
+        <span class="date"></span>
+    </footer>
+</body>
+</html>
