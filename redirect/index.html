@@ -68,22 +68,25 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            redirectToBrowserOrApp();
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+        redirectToExternalBrowser();
+    });
 
-        function redirectToBrowserOrApp() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    function redirectToExternalBrowser() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            if (/android/i.test(userAgent)) {
-                window.location.href = 'googlechrome://navigate?url=https://jisungeda55.github.io/pressnote/';
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = 'safari://https://jisungeda55.github.io/pressnote/';
-            } else {
-                window.location.href = 'https://jisungeda55.github.io/pressnote/';
-            }
+        if (/android/i.test(userAgent)) {
+            // 안드로이드: Intent 스킴을 사용해 외부 브라우저 강제 호출
+            window.location.href = 'intent://jisungeda55.github.io/pressnote/#Intent;scheme=https;package=com.android.chrome;end;';
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            // iOS: window.open으로 외부 브라우저 강제 호출
+            window.open('https://jisungeda55.github.io/pressnote/', '_blank');
+        } else {
+            // 그 외 환경: 일반 리다이렉트
+            window.location.href = 'https://jisungeda55.github.io/pressnote/';
         }
-    </script>
+    }
+</script>
 </head>
 <body>
     <div class="container">
