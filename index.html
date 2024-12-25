@@ -265,16 +265,27 @@ body::-webkit-scrollbar {
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            fetchArticles();
+    fetchArticles();
 
-            const loadMoreButton = document.createElement('button');
-            loadMoreButton.className = 'load-more';
-            loadMoreButton.textContent = '더보기';
-            loadMoreButton.addEventListener('click', () => renderArticles(3));
+    const loadMoreButton = document.createElement('button');
+    loadMoreButton.className = 'load-more';
+    loadMoreButton.textContent = '더보기';
 
-            const main = document.querySelector('main');
-            main.appendChild(loadMoreButton);
-        });
+    loadMoreButton.addEventListener('click', () => {
+        // 버튼 색상 변경
+        loadMoreButton.style.backgroundColor = 'darkred';
+
+        // 0.25초 후에 원래 색상으로 복원
+        setTimeout(() => {
+            loadMoreButton.style.backgroundColor = 'var(--accent-color)';
+        }, 250);
+
+        renderArticles(3);
+    });
+
+    const main = document.querySelector('main');
+    main.appendChild(loadMoreButton);
+});
 
         function displayDate() {
             const dateElement = document.querySelector('.date');
